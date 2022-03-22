@@ -5,9 +5,12 @@ class ProductReview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Product Review'),
+    return const Scaffold(
+      // appBar: AppBar(
+      //   title: const Text('Product Review'),
+      // ),
+      body: Center(
+        child: Text('Product Review'),
       ),
     );
   }

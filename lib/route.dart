@@ -5,6 +5,7 @@ import 'package:auto_route_practice/product_detail.dart';
 import 'package:auto_route_practice/product_infromation.dart';
 import 'package:auto_route_practice/product_review.dart';
 import 'package:auto_route_practice/profile_page.dart';
+import 'package:auto_route_practice/setting_page.dart';
 import 'buttom_bar_page.dart';
 
 @MaterialAutoRouter(
@@ -26,10 +27,22 @@ import 'buttom_bar_page.dart';
               path: '',
             ),
             AutoRoute(
-              path: ':productId',
-              name: 'ProductDetail',
-              page: ProductDetail,
-            ),
+                path: ':productId',
+                name: 'ProductDetail',
+                page: ProductDetail,
+                children: <AutoRoute>[
+                  AutoRoute(
+                    page: ProductInformation,
+                    path: 'product-info',
+                    name: 'ProductInformation',
+                    initial: true,
+                  ),
+                  AutoRoute(
+                    page: ProductReview,
+                    path: 'product-review',
+                    name: 'ProductReview',
+                  ),
+                ]),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
         ),
@@ -39,9 +52,21 @@ import 'buttom_bar_page.dart';
           name: 'Order',
         ),
         AutoRoute(
-          page: ProfilePage,
           path: 'profile',
           name: 'Profile',
+          page: EmptyRouterPage,
+          children: <AutoRoute>[
+            AutoRoute(
+              page: ProfilePage,
+              path: '',
+            ),
+            AutoRoute(
+              page: SettingPage,
+              path: 'setting_page',
+              name: 'SettingPage',
+            ),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
         ),
       ],
     ),

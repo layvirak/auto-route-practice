@@ -1,6 +1,5 @@
 import 'package:auto_route_practice/route.gr.dart';
 import 'package:flutter/material.dart';
-import '';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(),
     );

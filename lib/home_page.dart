@@ -7,6 +7,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        elevation: 0.0,
+        child: const Icon(
+          Icons.add,
+        ),
+        onPressed: () {},
+      ),
       appBar: AppBar(
         title: const Text('Hone Screen'),
       ),
@@ -16,9 +23,45 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: ElevatedButton(
               onPressed: () {
-                AutoRouter.of(context).pushNamed('12');
+                AutoRouter.of(context).pushNamed('1');
               },
               child: const Text('Product 1'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('2');
+              },
+              child: const Text('Product 2'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('3');
+              },
+              child: const Text('Product 3'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('4');
+              },
+              child: const Text('Product 4'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('5');
+              },
+              child: const Text('Product 5'),
             ),
           ),
         ],

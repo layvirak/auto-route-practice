@@ -5,9 +5,9 @@ class ProductInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Product Information'),
+    return const Scaffold(
+      body: Center(
+        child: Text('Product information'),
       ),
     );
   }

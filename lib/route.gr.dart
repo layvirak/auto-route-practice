@@ -11,16 +11,19 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i10;
 
 import 'buttom_bar_page.dart' as _i1;
-import 'home_page.dart' as _i5;
+import 'home_page.dart' as _i4;
 import 'order_page.dart' as _i3;
-import 'product_detail.dart' as _i6;
-import 'profile_page.dart' as _i4;
+import 'product_detail.dart' as _i5;
+import 'product_infromation.dart' as _i6;
+import 'product_review.dart' as _i7;
+import 'profile_page.dart' as _i8;
+import 'setting_page.dart' as _i9;
 
 class AppRouter extends _i2.RootStackRouter {
-  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -39,11 +42,11 @@ class AppRouter extends _i2.RootStackRouter {
     },
     Profile.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.ProfilePage());
+          routeData: routeData, child: const _i2.EmptyRouterPage());
     },
     HomeRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.HomePage());
+          routeData: routeData, child: const _i4.HomePage());
     },
     ProductDetail.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
@@ -52,7 +55,23 @@ class AppRouter extends _i2.RootStackRouter {
               ProductDetailArgs(productId: pathParams.optInt('productId')));
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i6.ProductDetail(key: args.key, productId: args.productId));
+          child: _i5.ProductDetail(key: args.key, productId: args.productId));
+    },
+    ProductInformation.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.ProductInformation());
+    },
+    ProductReview.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i7.ProductReview());
+    },
+    ProfileRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i8.ProfilePage());
+    },
+    SettingPage.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i9.SettingPage());
     }
   };
 
@@ -70,7 +89,19 @@ class AppRouter extends _i2.RootStackRouter {
               children: [
                 _i2.RouteConfig(HomeRoute.name, path: '', parent: Home.name),
                 _i2.RouteConfig(ProductDetail.name,
-                    path: ':productId', parent: Home.name),
+                    path: ':productId',
+                    parent: Home.name,
+                    children: [
+                      _i2.RouteConfig('#redirect',
+                          path: '',
+                          parent: ProductDetail.name,
+                          redirectTo: 'product-info',
+                          fullMatch: true),
+                      _i2.RouteConfig(ProductInformation.name,
+                          path: 'product-info', parent: ProductDetail.name),
+                      _i2.RouteConfig(ProductReview.name,
+                          path: 'product-review', parent: ProductDetail.name)
+                    ]),
                 _i2.RouteConfig('*#redirect',
                     path: '*',
                     parent: Home.name,
@@ -80,7 +111,19 @@ class AppRouter extends _i2.RootStackRouter {
           _i2.RouteConfig(Order.name,
               path: 'order', parent: ButtomBarRoute.name),
           _i2.RouteConfig(Profile.name,
-              path: 'profile', parent: ButtomBarRoute.name)
+              path: 'profile',
+              parent: ButtomBarRoute.name,
+              children: [
+                _i2.RouteConfig(ProfileRoute.name,
+                    path: '', parent: Profile.name),
+                _i2.RouteConfig(SettingPage.name,
+                    path: 'setting_page', parent: Profile.name),
+                _i2.RouteConfig('*#redirect',
+                    path: '*',
+                    parent: Profile.name,
+                    redirectTo: '',
+                    fullMatch: true)
+              ])
         ])
       ];
 }
@@ -112,15 +155,16 @@ class Order extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.ProfilePage]
+/// [_i2.EmptyRouterPage]
 class Profile extends _i2.PageRouteInfo<void> {
-  const Profile() : super(Profile.name, path: 'profile');
+  const Profile({List<_i2.PageRouteInfo>? children})
+      : super(Profile.name, path: 'profile', initialChildren: children);
 
   static const String name = 'Profile';
 }
 
 /// generated route for
-/// [_i5.HomePage]
+/// [_i4.HomePage]
 class HomeRoute extends _i2.PageRouteInfo<void> {
   const HomeRoute() : super(HomeRoute.name, path: '');
 
@@ -128,13 +172,15 @@ class HomeRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.ProductDetail]
+/// [_i5.ProductDetail]
 class ProductDetail extends _i2.PageRouteInfo<ProductDetailArgs> {
-  ProductDetail({_i7.Key? key, int? productId})
+  ProductDetail(
+      {_i10.Key? key, int? productId, List<_i2.PageRouteInfo>? children})
       : super(ProductDetail.name,
             path: ':productId',
             args: ProductDetailArgs(key: key, productId: productId),
-            rawPathParams: {'productId': productId});
+            rawPathParams: {'productId': productId},
+            initialChildren: children);
 
   static const String name = 'ProductDetail';
 }
@@ -142,7 +188,7 @@ class ProductDetail extends _i2.PageRouteInfo<ProductDetailArgs> {
 class ProductDetailArgs {
   const ProductDetailArgs({this.key, this.productId});
 
-  final _i7.Key? key;
+  final _i10.Key? key;
 
   final int? productId;
 
@@ -150,4 +196,37 @@ class ProductDetailArgs {
   String toString() {
     return 'ProductDetailArgs{key: $key, productId: $productId}';
   }
+}
+
+/// generated route for
+/// [_i6.ProductInformation]
+class ProductInformation extends _i2.PageRouteInfo<void> {
+  const ProductInformation()
+      : super(ProductInformation.name, path: 'product-info');
+
+  static const String name = 'ProductInformation';
+}
+
+/// generated route for
+/// [_i7.ProductReview]
+class ProductReview extends _i2.PageRouteInfo<void> {
+  const ProductReview() : super(ProductReview.name, path: 'product-review');
+
+  static const String name = 'ProductReview';
+}
+
+/// generated route for
+/// [_i8.ProfilePage]
+class ProfileRoute extends _i2.PageRouteInfo<void> {
+  const ProfileRoute() : super(ProfileRoute.name, path: '');
+
+  static const String name = 'ProfileRoute';
+}
+
+/// generated route for
+/// [_i9.SettingPage]
+class SettingPage extends _i2.PageRouteInfo<void> {
+  const SettingPage() : super(SettingPage.name, path: 'setting_page');
+
+  static const String name = 'SettingPage';
 }
