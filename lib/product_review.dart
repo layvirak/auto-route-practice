@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HonePage extends StatelessWidget {
-  const HonePage({Key? key}) : super(key: key);
+class ProductReview extends StatelessWidget {
+  const ProductReview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hone Screen'),
+        title: const Text('Product Review'),
       ),
     );
   }
