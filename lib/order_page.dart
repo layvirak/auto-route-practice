@@ -6,13 +6,6 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        elevation: 0.0,
-        child: const Icon(
-          Icons.add,
-        ),
-        onPressed: () {},
-      ),
       appBar: AppBar(
         title: const Text('Order Page'),
       ),

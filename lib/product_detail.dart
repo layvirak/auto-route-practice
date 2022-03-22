@@ -9,8 +9,21 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        elevation: 0.0,
+        child: const Icon(
+          Icons.add,
+        ),
+        onPressed: () {},
+      ),
       appBar: AppBar(
         title: const Text('Product Detail'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.card_travel),
+          ),
+        ],
       ),
       body: Column(
         children: [
