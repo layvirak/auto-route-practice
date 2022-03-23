@@ -125,7 +125,7 @@ class AppRouter extends _i2.RootStackRouter {
                 _i2.RouteConfig(ProfileRoute.name,
                     path: '', parent: Profile.name),
                 _i2.RouteConfig(SettingPage.name,
-                    path: 'setting_page', parent: Profile.name),
+                    path: 'setting-page', parent: Profile.name),
                 _i2.RouteConfig('*#redirect',
                     path: '*',
                     parent: Profile.name,
@@ -234,7 +234,7 @@ class ProfileRoute extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.SettingPage]
 class SettingPage extends _i2.PageRouteInfo<void> {
-  const SettingPage() : super(SettingPage.name, path: 'setting_page');
+  const SettingPage() : super(SettingPage.name, path: 'setting-page');
 
   static const String name = 'SettingPage';
 }

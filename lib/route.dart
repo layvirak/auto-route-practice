@@ -27,24 +27,25 @@ import 'buttom_bar_page.dart';
               path: '',
             ),
             AutoRoute(
-                path: ':productId',
-                name: 'ProductDetail',
-                page: ProductDetail,
-                children: <AutoRoute>[
-                  CustomRoute(
-                    page: ProductInformation,
-                    path: 'product-info',
-                    name: 'ProductInformation',
-                    initial: true,
-                    transitionsBuilder: TransitionsBuilders.noTransition,
-                  ),
-                  CustomRoute(
-                    page: ProductReview,
-                    path: 'product-review',
-                    name: 'ProductReview',
-                    transitionsBuilder: TransitionsBuilders.noTransition,
-                  ),
-                ]),
+              path: ':productId',
+              name: 'ProductDetail',
+              page: ProductDetail,
+              children: <AutoRoute>[
+                CustomRoute(
+                  page: ProductInformation,
+                  path: 'product-info',
+                  name: 'ProductInformation',
+                  initial: true,
+                  transitionsBuilder: TransitionsBuilders.noTransition,
+                ),
+                CustomRoute(
+                  page: ProductReview,
+                  path: 'product-review',
+                  name: 'ProductReview',
+                  transitionsBuilder: TransitionsBuilders.noTransition,
+                ),
+              ],
+            ),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
         ),
@@ -64,7 +65,7 @@ import 'buttom_bar_page.dart';
             ),
             AutoRoute(
               page: SettingPage,
-              path: 'setting_page',
+              path: 'setting-page',
               name: 'SettingPage',
             ),
             RedirectRoute(path: '*', redirectTo: ''),
