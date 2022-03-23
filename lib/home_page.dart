@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {},
       ),
       appBar: AppBar(
-        title: const Text('Hone Screen'),
+        title: const Text('Home Screen'),
       ),
       body: Column(
         children: [

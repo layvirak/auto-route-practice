@@ -31,16 +31,18 @@ import 'buttom_bar_page.dart';
                 name: 'ProductDetail',
                 page: ProductDetail,
                 children: <AutoRoute>[
-                  AutoRoute(
+                  CustomRoute(
                     page: ProductInformation,
                     path: 'product-info',
                     name: 'ProductInformation',
                     initial: true,
+                    transitionsBuilder: TransitionsBuilders.noTransition,
                   ),
-                  AutoRoute(
+                  CustomRoute(
                     page: ProductReview,
                     path: 'product-review',
                     name: 'ProductReview',
+                    transitionsBuilder: TransitionsBuilders.noTransition,
                   ),
                 ]),
             RedirectRoute(path: '*', redirectTo: ''),

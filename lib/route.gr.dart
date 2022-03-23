@@ -58,12 +58,20 @@ class AppRouter extends _i2.RootStackRouter {
           child: _i5.ProductDetail(key: args.key, productId: args.productId));
     },
     ProductInformation.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.ProductInformation());
+      return _i2.CustomPage<dynamic>(
+          routeData: routeData,
+          child: const _i6.ProductInformation(),
+          transitionsBuilder: _i2.TransitionsBuilders.noTransition,
+          opaque: true,
+          barrierDismissible: false);
     },
     ProductReview.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.ProductReview());
+      return _i2.CustomPage<dynamic>(
+          routeData: routeData,
+          child: const _i7.ProductReview(),
+          transitionsBuilder: _i2.TransitionsBuilders.noTransition,
+          opaque: true,
+          barrierDismissible: false);
     },
     ProfileRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
